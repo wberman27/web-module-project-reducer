@@ -1,11 +1,15 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/alt-text */
+import React, { useReducer } from 'react';
 
 import './App.css';
-
+import reducer, {initialState} from './reducers';
 import TotalDisplay from './components/TotalDisplay';
 import CalcButton from './components/CalcButton';
 
 function App() {
+
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
     <div className="App">
@@ -17,10 +21,10 @@ function App() {
         <div className="col-md-12 d-flex justify-content-center">
           <form name="Cal">
             
-            <TotalDisplay value={0}/>
+            <TotalDisplay value={state.total}/>
             <div className="row details">
-              <span id="operation"><b>Operation:</b> X</span>
-              <span id="memory"><b>Memory:</b> 0</span>
+              <span id="operation"><b>Operation:</b> {initialState.operation}</span>
+              <span id="memory"><b>Memory:</b> {initialState.memory}</span>
             </div>
             
             <div className="row">
