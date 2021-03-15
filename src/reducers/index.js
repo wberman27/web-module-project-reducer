@@ -1,5 +1,5 @@
 /* eslint-disable default-case */
-import { ADD_ONE, APPLY_NUMBER, CHANGE_OPERATION, CLEAR_DISPLAY } from './../actions';
+import { ADD_ONE, APPLY_NUMBER, CHANGE_OPERATION, CLEAR_DISPLAY, ADD_TO_MEMORY, MEMORY_CLEAR, MEMORY_RECALL } from './../actions';
 
 export const initialState = {
     total: 0,
@@ -42,6 +42,22 @@ const reducer = (state, action) => {
             return({
                 ...state,
                 total: 0,
+            })
+
+        case(ADD_TO_MEMORY):
+            return({
+                ...state,
+                memory: state.total
+            })
+        case(MEMORY_RECALL):
+            return({
+                ...state,
+                total: state.memory
+            })
+        case(MEMORY_CLEAR):
+            return({
+                ...state,
+                memory: 0,
             })
             
         default:
