@@ -11,14 +11,13 @@ function App() {
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  const handleClick = (e)=>{
-    console.log(e)
-    return dispatch(addOne(1))
-  }
   // const handleClick = (e)=>{
-  //   console.log(e)
-  //   return dispatch(applyNumber(e.target.value))
+  //   return dispatch(addOne(1))
   // }
+  const handleClick = (e)=>{
+    console.log(e.target.textContent)
+    return dispatch(applyNumber(parseInt(e.target.textContent)))
+  }
 
   return (
     <div className="App">
@@ -44,20 +43,20 @@ function App() {
 
             <div className="row">
               <CalcButton value={1} onClick={handleClick}/>
-              <CalcButton value={2}/>
-              <CalcButton value={3}/>
+              <CalcButton value={2} onClick={handleClick}/>
+              <CalcButton value={3} onClick={handleClick}/>
             </div>
 
             <div className="row">
-              <CalcButton value={4}/>
-              <CalcButton value={5}/>
-              <CalcButton value={6}/>
+              <CalcButton value={4} onClick={handleClick}/>
+              <CalcButton value={5} onClick={handleClick}/>
+              <CalcButton value={6} onClick={handleClick}/>
             </div>
 
             <div className="row">
-              <CalcButton value={7}/>
-              <CalcButton value={8}/>
-              <CalcButton value={9}/>
+              <CalcButton value={7} onClick={handleClick}/>
+              <CalcButton value={8} onClick={handleClick}/>
+              <CalcButton value={9} onClick={handleClick}/>
             </div>
 
             <div className="row">
