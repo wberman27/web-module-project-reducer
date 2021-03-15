@@ -1,15 +1,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useReducer } from 'react';
-
 import './App.css';
 import reducer, {initialState} from './reducers';
 import TotalDisplay from './components/TotalDisplay';
 import CalcButton from './components/CalcButton';
+import {applyNumber} from './actions'
 
 function App() {
 
   const [state, dispatch] = useReducer(reducer, initialState)
+
+  const handleClick = (e)=>{
+    console.log(e)
+    return dispatch(applyNumber(e.target.value))
+  }
 
   return (
     <div className="App">
@@ -23,8 +28,8 @@ function App() {
             
             <TotalDisplay value={state.total}/>
             <div className="row details">
-              <span id="operation"><b>Operation:</b> {initialState.operation}</span>
-              <span id="memory"><b>Memory:</b> {initialState.memory}</span>
+              <span id="operation"><b>Operation:</b> {state.operation}</span>
+              <span id="memory"><b>Memory:</b> {state.memory}</span>
             </div>
             
             <div className="row">
@@ -34,7 +39,7 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={1}/>
+              <CalcButton value={1} onClick={handleClick}/>
               <CalcButton value={2}/>
               <CalcButton value={3}/>
             </div>
