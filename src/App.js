@@ -5,7 +5,7 @@ import './App.css';
 import reducer, {initialState} from './reducers';
 import TotalDisplay from './components/TotalDisplay';
 import CalcButton from './components/CalcButton';
-import {applyNumber} from './actions'
+import {addOne, applyNumber} from './actions'
 
 function App() {
 
@@ -13,8 +13,12 @@ function App() {
 
   const handleClick = (e)=>{
     console.log(e)
-    return dispatch(applyNumber(e.target.value))
+    return dispatch(addOne(1))
   }
+  // const handleClick = (e)=>{
+  //   console.log(e)
+  //   return dispatch(applyNumber(e.target.value))
+  // }
 
   return (
     <div className="App">
